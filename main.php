@@ -1,3 +1,3 @@
-
-<!-- <iframe src="http://127.0.0.1/combat.php" title="combat_window" class="combat_window"></iframe> -->
-
+<div class="container">
+    <p>Préparez-vous à entrer sur le ring et à affronter les meilleurs boxeurs !</p>
+</div>

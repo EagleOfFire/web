@@ -4,7 +4,8 @@
         <nav>
             <ul>
                 <li><a href="index.php?page=Accueil">Accueil</a></li>
-                <li><a href="index.php?page=Combat">Combat</a></li>
+                <!-- <li><a href="index.php?page=Combat">Combat</a></li> -->
+                 <li><a href="http://127.0.0.1/combat.php">Combat</a></li>
                 <li><a href="index.php?page=Profil">Profil</a></li>
                 <li><a href="index.php?page=Contact">Contact</a></li>
             </ul>

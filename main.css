@@ -1,5 +1,31 @@
-.combat_window{
-    height:200px;
-    width:300px;
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
-
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+header h1 {
+    margin: 0;
+}
+.container {
+    margin: 20px auto;
+    max-width: 800px;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.btn:hover {
+    background-color: #0056b3;
+}

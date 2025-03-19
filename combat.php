@@ -27,28 +27,25 @@
 
     $query = $pdo->query("SELECT * FROM boxeur");
     $boxeur = $query->fetchAll(PDO::FETCH_ASSOC);
-    if (!empty($boxeur)) {
+    if (!empty($boxeur) && !isset($randomboxeur)) {
         $randomboxeur = $boxeur[array_rand($boxeur)];
-        echo "<script>
-                    document.querySelector('#health_text_right').textContent = '{$randomboxeur["pv"]}';
-                </script>";
     }
     ?>
 
     <?php
-    $userBoxeur = [
+    $userBoxeur = array(
         "vitesse" => 30,
         "attaque" => 30,
         "pvmax" => 100,
-        "pvactuel" => 100,
-    ];
+        "pvactuel" => 100
+    );
 
-    $enemieBoxeur = [
+    $enemieBoxeur = array(
         "vitesse" => $randomboxeur["vitesse"],
         "attaque" => $randomboxeur["attaque"],
         "pvmax" => $randomboxeur["pv"],
-        "pvactuel" => $randomboxeur["pv"],
-    ];
+        "pvactuel" => $randomboxeur["pv"]
+    );
     ?>
 
     <div class="round_number">Round 1</div>
@@ -64,9 +61,9 @@
 
     <?php
     if (array_key_exists("attaque", $_POST)) {
-        attaque();
+        attaque($userBoxeur,$enemieBoxeur);
     }
-    function attaque()
+    function attaque($userBoxeur, $enemieBoxeur)
     {
         $userVitesse = $userBoxeur["vitesse"];
         $userResultatVitesse = rand(0, $userVitesse);
@@ -77,11 +74,13 @@
             $enemieBoxeur["pvactuel"] -= $userPuissance;
             echo "<script>
                         document.querySelector('#health_text_right').textContent = '{$enemieBoxeur["pvactuel"]}';
+                        document.querySelector('#health_text_left').textContent = '{$userBoxeur["pvactuel"]}';
                     </script>";
         } elseif ($userResultatVitesse < $enemieRandomNumber) {
             $enemiePuissance = rand(0, $enemieBoxeur["attaque"]);
             $userBoxeur["pvactuel"] -= $enemiePuissance;
             echo "<script>
+                        document.querySelector('#health_text_right').textContent = '{$enemieBoxeur["pvactuel"]}';
                         document.querySelector('#health_text_left').textContent = '{$userBoxeur["pvactuel"]}';
                     </script>";
         } else {
@@ -95,13 +94,9 @@
 
         </form>
 
-<!--     <div class="container-button">
-        <div class="hover bt-1"></div>
-        <div class="hover bt-2"></div>
-        <div class="hover bt-3"></div>
-        <div class="hover bt-4"></div>
-        <div class="hover bt-5"></div>
-        <div class="hover bt-6"></div>
-    </div> -->
+    <div class="return-home">
+        <a href="index.php?page=Accueil" class="button">Retour à l'accueil</a>
+    </div>
+
 </body>
 </html>

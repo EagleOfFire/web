@@ -22,7 +22,8 @@
                 include "main.php";
                 break;
             case "Combat":
-                include "main.php";
+                include "combat.php";
+                // include "main.php";
                 break;
             case "Profil":
                 include "connexion.php";
