@@ -1,0 +1,108 @@
+body {
+    background: #353535;
+    background-image: "ring.jpg";
+    background: url("./images/ring.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.round_number{
+    position: absolute;
+    top: 1%;
+    left: 45%;
+    color: white;
+    font-size: 50px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.health_background {
+    position: absolute;
+
+    height: 0;
+    width: 40%;
+    border-bottom: 50px solid #d9c127;
+}
+
+#health_background_left{
+    top: 20px;
+    left: 0%;
+    border-right: 50px solid transparent;
+}
+
+#health_background_right{
+    top: 20px;
+    right: 0%;
+    border-left: 50px solid transparent;    
+}
+
+.health_bar{
+    position: absolute;
+
+    height: 0;
+    width: 40%;
+    border-bottom: 40px solid #d60f0f;
+}
+
+#health_bar_left{
+    top: 25px;
+    left: -5px;
+    border-left: 0px;
+    border-right: 40px solid transparent;
+}
+
+#health_bar_right{
+    top: 25px;
+    right: -5px;
+    border-right: 0px;
+    border-left: 40px solid transparent;
+}
+
+.health_text{
+    position: absolute;
+    top: 25px;
+    font-size: 30px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+
+#health_text_left{
+    left: 17%;
+}
+
+#health_text_right{
+    right: 17%;
+}
+
+.left_fighter{
+    position: absolute;
+    height: 80%;
+    top: 60%;
+    left: 10%;
+    transform: translateY(-50%);
+}
+
+.right_fighter{
+    position: absolute;
+    height: 80%;
+    top: 20%;
+    right: 10%;
+    transform: translateY(-50%);
+    transform: scaleX(-1);
+}
+
+.attaque_boutton{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    width: 135px;
+    height: 47px;
+    background: transparent;
+    font-size: 17px;
+    font-weight: 900;
+    border: 3px solid #f39923;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+}
