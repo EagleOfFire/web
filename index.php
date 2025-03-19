@@ -22,7 +22,7 @@
                 include "main.php";
                 break;
             case "Profil":
-                include "profil.php";
+                include "connexion.php";
                 break;
             default:
                 include "main.php";

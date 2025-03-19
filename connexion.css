@@ -1,0 +1,66 @@
+/* Styles pour la page de connexion */
+
+
+.login-container {
+    width: 320px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #004466;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button-group .btn {
+    background-color: #004466;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1em;
+}
+
+.button-group .btn:hover {
+    background-color: #00334d;
+}
+
+.btn.btn-secondary {
+    background-color: #888;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #666;
+}
