@@ -1,0 +1,87 @@
+/* Styles spécifiques à la page profil.php */
+.profil-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.profil-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    margin-bottom: 20px;
+}
+
+/* Menu des onglets */
+.tab-menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding: 0;
+    border-bottom: 2px solid #ccc;
+}
+
+.tab-menu li {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tab-menu li.active {
+    background-color: #004466;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Contenu des onglets */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Styles pour la liste des personnages */
+.personnages-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.personnage {
+    text-align: center;
+    margin: 10px;
+}
+
+.personnage img {
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Bouton de déconnexion */
+.logout {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-logout {
+    background-color: #cc0000;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #990000;
+}

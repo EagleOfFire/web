@@ -1,5 +1,18 @@
 <?php
-// Si connecté alors profil.php
+
+$host = "127.0.0.1";
+$dbname = 'boxe_game';
+$username = 'root';
+$password = '';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+
+// Si connecté, alors profil.php
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     header("Location: profil.php");
     exit;
@@ -14,14 +27,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($email) || empty($password)) {
         $error = "Veuillez remplir tous les champs.";
     } else {
-        $_SESSION['loggedin'] = true;
-        $_SESSION['email'] = $email;
-        header("Location: profil.php");
-        exit;
+        $stmt = $pdo->prepare("SELECT * FROM `user` WHERE email = :email LIMIT 1");
+        $stmt->execute(['email' => $email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($user && password_verify($password, $user['mdp'])) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['user_id'] = $user['id'];
+            header("Location: profil.php");
+            exit;
+        } else {
+            $error = "Identifiants incorrects.";
+        }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>

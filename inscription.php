@@ -1,6 +1,18 @@
 <?php
 
-// Si l'utilisateur est déjà connecté, on redirige vers son profil
+$host = "127.0.0.1";
+$dbname = 'boxe_game';
+$username = 'root';
+$password = '';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+
+// Si  connecté alors profil.php
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     header("Location: profil.php");
     exit;
@@ -14,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = isset($_POST['password']) ? trim($_POST['password']) : "";
     $confirm_password = isset($_POST['confirm_password']) ? trim($_POST['confirm_password']) : "";
 
-    // Vérification des champs
     if (empty($email) || empty($password) || empty($confirm_password)) {
         $error = "Tous les champs sont obligatoires.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -22,18 +33,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($password !== $confirm_password) {
         $error = "Les mots de passe ne correspondent pas.";
     } else {
-        // Ici, normalement, vous stockeriez ces informations dans une base de données.
-        // Pour l'instant, on les sauvegarde temporairement dans la session.
-        $_SESSION['loggedin'] = true;
-        $_SESSION['email'] = $email;
+        $stmt = $pdo->prepare("SELECT id FROM `user` WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+        if ($stmt->rowCount() > 0) {
+            $error = "Cet email est déjà utilisé.";
+        } else {
 
-        // Redirection vers le profil après inscription
-        header("Location: profil.php");
-        exit;
+            $parts = explode('@', $email);
+            $pseudo = $parts[0];
+
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            $stmt = $pdo->prepare("INSERT INTO `user` (pseudo, mdp, nom, prenom, genre, email) VALUES (:pseudo, :mdp, '', '', 'Autre', :email)");
+            $result = $stmt->execute([
+                'pseudo' => $pseudo,
+                'mdp' => $hashedPassword,
+                'email' => $email
+            ]);
+            if ($result) {
+                $_SESSION['loggedin'] = true;
+                $_SESSION['email'] = $email;
+                $_SESSION['user_id'] = $pdo->lastInsertId();
+                header("Location: profil.php");
+                exit;
+            } else {
+                $error = "Erreur lors de l'inscription. Veuillez réessayer.";
+            }
+        }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeaFight.com</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="connexion.css">
+    <link rel="stylesheet" href="inscription.css">
+    <link rel="stylesheet" href="profil.css">
 
 </head>
 <body>
