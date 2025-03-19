@@ -1,3 +1,4 @@
+<!-- HEADER -->
 <header>
         <h1>SeaFight ! Le seul jeu de boxe au monde (pas sur)</h1>
         <nav>

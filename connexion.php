@@ -1,3 +1,5 @@
+<!-- PAGE DE CONNEXION -->
+
 <?php
 
 $host = "127.0.0.1";

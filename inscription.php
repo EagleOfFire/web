@@ -1,3 +1,5 @@
+<!-- PAGE D'INSCRIPTION -->
+
 <?php
 
 $host = "127.0.0.1";
@@ -81,6 +83,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group">
                 <label for="email">Adresse Email :</label>
                 <input type="email" id="email" name="email" placeholder="Votre email" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">Genre :</label>
+                <input type="genre" id="genre" name="genre" placeholder="Votre Genre" required>
+            </div>
+            <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="nom" id="nom" name="nom" placeholder="Votre Nom" required>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom :</label>
+                <input type="prenom" id="prenom" name="prenom" placeholder="Votre Prenom" required>
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe :</label>

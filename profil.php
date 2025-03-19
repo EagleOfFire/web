@@ -1,14 +1,34 @@
 <?php
+$host = "127.0.0.1";
+$dbname = 'boxe_game';
+$username = 'root';
+$password = '';
 
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+
+$query = $pdo->query("SELECT * FROM boxeur");
+        $boxeur = $query->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($boxeur)) {
+            $randomboxeur = $boxeur[array_rand($boxeur)];
+            echo "<script>
+                document.querySelector('#health_text_right').textContent = '{$randomboxeur['pv']}';
+            </script>";
+        }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil - SeaFight.com</title>
-    <link rel="stylesheet" href="index.css">  <!-- Styles globaux -->
-    <link rel="stylesheet" href="profil.css"> <!-- Styles spécifiques au profil -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="profil.css">
 </head>
 <body>
     <div class="profil-container">
@@ -25,12 +45,12 @@
             <!-- Contenu des onglets -->
             <div class="tab-content active" id="informations">
                 <h3>Informations</h3>
-                <p><strong>Nom :</strong> Dupont</p>
-                <p><strong>Prénom :</strong> Jean</p>
-                <p><strong>Email :</strong> jean.dupont@example.com</p>
-                <p><strong>Pays :</strong> France</p>
+                <p><b>Nom :</b> Dupont</p>
+                <p><b>Prénom :</b> Jean</p>
+                <p><b>Email :</b> jean.dupont@example.com</p>
+                <p><b>Pays :</b> France</p>
             </div>
-            
+
             <div class="tab-content" id="personnages">
                 <h3>Personnages</h3>
                 <div class="personnages-list">
@@ -59,7 +79,7 @@
             </div>
         </div>
         
-        <!-- Bouton de déconnexion -->
+        <!-- Déconnexion -->
         <div class="logout">
             <a href="main.php" class="btn-logout">Déconnexion</a>
         </div>
